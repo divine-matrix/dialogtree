@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111318">
+    <title>Dialogtree — dialogue editor</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Dialogtree home">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>dialogtree</span>
+        </a>
+        <div class="project-name">
+          <span class="project-dot"></span>
+          <span id="project-title" contenteditable="true" spellcheck="false" aria-label="Project name">Untitled conversation</span>
+          <span class="save-status" id="save-status">Saved locally</span>
+        </div>
+        <div class="top-actions">
+          <button class="button button-quiet" id="import-button" type="button">
+            <span aria-hidden="true">↥</span> Import
+          </button>
+          <button class="button button-primary" id="export-button" type="button">
+            <span aria-hidden="true">↧</span> Export JSON
+          </button>
+          <input id="import-input" type="file" accept=".json,application/json" hidden>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="editor-column" aria-label="Dialog tree editor">
+          <div class="canvas-toolbar">
+            <div class="view-label">
+              <span class="eyebrow">WORKSPACE</span>
+              <span class="view-title">Conversation flow</span>
+            </div>
+            <div class="canvas-actions">
+              <span class="canvas-hint"><span class="keycap">Drag</span> to arrange</span>
+              <button class="button button-add" id="add-node-button" type="button"><span aria-hidden="true">＋</span> Add node</button>
+            </div>
+          </div>
+          <div class="canvas-viewport" id="canvas-viewport">
+            <div class="canvas-grid"></div>
+            <svg class="connections" id="connections" aria-hidden="true"></svg>
+            <div class="node-layer" id="node-layer"></div>
+            <div class="empty-canvas" id="empty-canvas" hidden>
+              <span class="empty-icon">＋</span>
+              <strong>Your story starts here</strong>
+              <span>Add a dialogue node to begin building your conversation.</span>
+              <button class="button button-primary" id="empty-add-button" type="button">Create first node</button>
+            </div>
+            <div class="canvas-legend">
+              <span><i class="legend-dot legend-start"></i> Start node</span>
+              <span><i class="legend-line"></i> Dialogue path</span>
+            </div>
+          </div>
+          <div class="canvas-footer">
+            <span id="node-count">0 nodes</span>
+            <span class="footer-separator"></span>
+            <span>Autosaved to this browser</span>
+            <button class="text-button" id="reset-button" type="button">Reset project</button>
+          </div>
+        </section>
+
+        <aside class="inspector" aria-label="Node inspector">
+          <div class="inspector-heading">
+            <div>
+              <span class="eyebrow">INSPECTOR</span>
+              <h1 id="inspector-title">Node details</h1>
+            </div>
+            <button class="icon-button" id="delete-node-button" type="button" title="Delete selected node" aria-label="Delete selected node" disabled>⌫</button>
+          </div>
+          <div class="inspector-content" id="inspector-content">
+            <div class="inspector-empty">
+              <div class="empty-selection-icon">↖</div>
+              <strong>Select a node</strong>
+              <span>Choose a node on the canvas to edit its dialogue and response paths.</span>
+            </div>
+          </div>
+          <section class="json-panel">
+            <div class="json-heading">
+              <div>
+                <span class="eyebrow">OUTPUT</span>
+                <h2>JSON preview</h2>
+              </div>
+              <button class="icon-button copy-button" id="copy-button" type="button" title="Copy JSON" aria-label="Copy JSON">⧉</button>
+            </div>
+            <pre class="json-preview" id="json-preview" aria-label="Live JSON preview"></pre>
+            <div class="format-note"><span class="format-dot"></span> Plain JSON · C# &amp; Godot ready</div>
+          </section>
+        </aside>
+      </main>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
