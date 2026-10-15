@@ -1,0 +1,12 @@
+<nav class="navbar">
+  <a href="{{ base_url }}/" class="logo">DevTools</a>
+  <ul class="nav-links">
+    {% set current = request_path | default('') %}
+    <li>
+      <a href="{{ base_url }}/" class="{{ 'active' if current == 'index.html' else '' }}">Home</a>
+    </li>
+    <li>
+      <a href="{{ base_url }}/about/" class="{{ 'active' if current.startswith('about') else '' }}">About</a>
+    </li>
+  </ul>
+</nav>

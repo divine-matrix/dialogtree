@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Game Development Tools{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the Game Development Tools</h1>
+    <p>This is the home page of the Game Development Tools application.</p>
+
+    <div class="tool-listing">
+    {% if data.tools %}
+    <hr>
+        <h2>Available Tools</h2>
+        {% for tool in data.tools %}
+        <div class="tool" data-variant="{{ tool.variant }}">
+            <h2>{{ tool.name }}</h2>
+            <p>{{ tool.description }}</p>
+            <a href="{{ base_url }}/{{ tool.route }}">Go to {{ tool.name }}</a>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No tools available at the moment.</p>
+    {% endif %}
+    </div>
+    
+{% endblock %}

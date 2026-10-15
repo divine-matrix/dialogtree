@@ -1,0 +1,16 @@
+{
+  "tools": [
+    {
+      "name": "Dialog Tree Editor",
+      "description": "Create and manage branching dialogue.",
+      "route": "dialog/",
+      "variant": "new"
+    },
+    {
+      "name": "JSON Easy Editor",
+      "description": "Browse and edit JSON data.",
+      "route": "json/",
+      "variant": "default"
+    }
+  ]
+}

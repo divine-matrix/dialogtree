@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Dialogs{% endblock %}
+
+{% block content %}
+  <h1>Dialogs</h1>
+  <div class="dialoglisting">
+	{% for dialog in data.dialogs %}
+		<div class="dialogitem">
+			<h2>{{ dialog.name }}</h2>
+			<p>{{ dialog.description }}</p>
+			<a href="{{ base_url }}/dialog/{{ dialog.id }}">Edit</a>
+		</div>
+	{% endfor %}
+  </div>
+{% endblock %}
