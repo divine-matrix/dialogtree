@@ -38,14 +38,25 @@
               <span class="view-title">Conversation flow</span>
             </div>
             <div class="canvas-actions">
-              <span class="canvas-hint"><span class="keycap">Drag</span> to arrange</span>
+              <span class="canvas-hint">Drag response dot to a node · <span class="keycap">Shift-click</span> select · Ctrl/Cmd+wheel zoom</span>
+              <button class="button button-quiet selection-action" id="duplicate-selection-button" type="button" disabled title="Duplicate selection (Ctrl+D)">Duplicate</button>
+              <button class="button button-quiet selection-action" id="delete-selection-button" type="button" disabled title="Delete selection (Delete)">Delete</button>
+              <div class="zoom-controls" aria-label="Canvas zoom controls">
+                <button class="button button-quiet zoom-button" id="zoom-out-button" type="button" title="Zoom out" aria-label="Zoom out">−</button>
+                <button class="button button-quiet zoom-level" id="zoom-level" type="button" title="Fit nodes to view">100%</button>
+                <button class="button button-quiet zoom-button" id="zoom-in-button" type="button" title="Zoom in" aria-label="Zoom in">＋</button>
+              </div>
               <button class="button button-add" id="add-node-button" type="button"><span aria-hidden="true">＋</span> Add node</button>
             </div>
           </div>
-          <div class="canvas-viewport" id="canvas-viewport">
-            <div class="canvas-grid"></div>
-            <svg class="connections" id="connections" aria-hidden="true"></svg>
-            <div class="node-layer" id="node-layer"></div>
+          <div class="canvas-viewport" id="canvas-viewport" tabindex="0" aria-label="Dialogue node canvas">
+            <div class="canvas-world" id="canvas-world">
+              <div class="canvas-content" id="canvas-content">
+                <div class="canvas-grid"></div>
+                <svg class="connections" id="connections" aria-hidden="true"></svg>
+                <div class="node-layer" id="node-layer"><div class="selection-box" id="selection-box" hidden></div></div>
+              </div>
+            </div>
             <div class="empty-canvas" id="empty-canvas" hidden>
               <span class="empty-icon">＋</span>
               <strong>Your story starts here</strong>
@@ -71,7 +82,7 @@
               <span class="eyebrow">INSPECTOR</span>
               <h1 id="inspector-title">Node details</h1>
             </div>
-            <button class="icon-button" id="delete-node-button" type="button" title="Delete selected node" aria-label="Delete selected node" disabled>⌫</button>
+            <button class="icon-button" id="delete-node-button" type="button" title="Delete selected nodes" aria-label="Delete selected nodes" disabled>⌫</button>
           </div>
           <div class="inspector-content" id="inspector-content">
             <div class="inspector-empty">
